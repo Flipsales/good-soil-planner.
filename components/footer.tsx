@@ -31,3 +31,48 @@ export function Footer() {
               <li>
                 <Link href="/shop" className="text-gray-400 hover:text-white transition-colors">
                   Shop
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-white mb-6">Resources</h4>
+            <ul className="space-y-4">
+              <li>
+                <Link href="/blog" className="text-gray-400 hover:text-white transition-colors">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/resources" className="text-gray-400 hover:text-white transition-colors">
+                  Resources
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-white mb-6">Support</h4>
+            <ul className="space-y-4">
+              <li>
+                <Link href="/contact" className="text-gray-400 hover:text-white transition-colors">
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
+                  About Us
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center">
+          <p className="text-gray-400 text-sm">© 2024 Good Soil Planner. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  )
+}
