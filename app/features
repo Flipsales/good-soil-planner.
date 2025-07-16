@@ -1,0 +1,236 @@
+import { ArrowRight, BookOpen, Calendar, CheckCircle, Heart, MessageCircle, Target, Users, Zap } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Footer } from "@/components/footer"
+import Link from "next/link"
+
+export default function FeaturesPage() {
+  const features = [
+    {
+      icon: Calendar,
+      title: "90-Day Structured Journey",
+      description:
+        "A carefully crafted 90-day program that guides you through daily practices, weekly reflections, and monthly milestones.",
+      benefits: [
+        "Daily devotional readings",
+        "Weekly reflection exercises",
+        "Monthly progress assessments",
+        "Habit tracking system",
+      ],
+    },
+    {
+      icon: BookOpen,
+      title: "Biblical Foundation",
+      description:
+        "Every lesson, exercise, and reflection is rooted in Scripture, ensuring your growth is aligned with God's Word.",
+      benefits: [
+        "Scripture-based daily readings",
+        "Verse memorization system",
+        "Biblical character studies",
+        "Theological depth without complexity",
+      ],
+    },
+    {
+      icon: Users,
+      title: "Community & Accountability",
+      description: "Connect with fellow believers on the same journey through our integrated community features.",
+      benefits: [
+        "Small group discussion guides",
+        "Accountability partner matching",
+        "Community prayer requests",
+        "Shared milestone celebrations",
+      ],
+    },
+    {
+      icon: Target,
+      title: "Goal Setting & Tracking",
+      description: "Set meaningful spiritual goals and track your progress with our comprehensive tracking system.",
+      benefits: ["SMART goal framework", "Progress visualization", "Milestone rewards", "Personal growth metrics"],
+    },
+    {
+      icon: Heart,
+      title: "Spiritual Disciplines",
+      description: "Learn and practice essential spiritual disciplines that will deepen your relationship with God.",
+      benefits: [
+        "Prayer guides and templates",
+        "Fasting preparation and support",
+        "Meditation techniques",
+        "Service opportunity finder",
+      ],
+    },
+    {
+      icon: MessageCircle,
+      title: "Reflection & Journaling",
+      description: "Guided journaling prompts and reflection exercises to help you process your spiritual journey.",
+      benefits: [
+        "Daily reflection prompts",
+        "Gratitude journaling",
+        "Prayer journal integration",
+        "Growth story documentation",
+      ],
+    },
+    {
+      icon: Zap,
+      title: "Habit Formation",
+      description: "Build lasting spiritual habits using proven psychological principles and biblical wisdom.",
+      benefits: [
+        "Habit stacking techniques",
+        "Trigger identification",
+        "Reward systems",
+        "Relapse recovery strategies",
+      ],
+    },
+    {
+      icon: CheckCircle,
+      title: "Progress Tracking",
+      description: "Monitor your spiritual growth with detailed analytics and progress reports.",
+      benefits: ["Weekly progress reports", "Growth trend analysis", "Achievement badges", "Personal dashboard"],
+    },
+  ]
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+      {/* Hero Section */}
+      <section className="py-20 lg:py-32">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-4xl mx-auto">
+            <Badge className="mb-6 bg-green-100 text-green-800 hover:bg-green-200">🌟 Complete Feature Overview</Badge>
+
+            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+              Everything You Need for
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-amber-600">
+                {" "}
+                Spiritual Growth
+              </span>
+            </h1>
+
+            <p className="text-xl md:text-2xl text-slate-600 mb-8 leading-relaxed">
+              Discover all the powerful features designed to transform your spiritual life over 90 days
+            </p>
+
+            <Link href="/get-started">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 py-4 text-lg"
+              >
+                Start Your Journey
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12">
+            {features.map((feature, index) => (
+              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center space-x-4">
+                    <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center">
+                      <feature.icon className="h-6 w-6 text-green-600" />
+                    </div>
+                    <CardTitle className="text-xl text-slate-900">{feature.title}</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-slate-600 mb-6">{feature.description}</p>
+                  <ul className="space-y-2">
+                    {feature.benefits.map((benefit, benefitIndex) => (
+                      <li key={benefitIndex} className="flex items-center text-slate-700">
+                        <CheckCircle className="h-4 w-4 text-green-600 mr-2 flex-shrink-0" />
+                        {benefit}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Feature Comparison */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">How Good Soil Compares</h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              See why thousands choose Good Soil over other discipleship programs
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <div className="grid grid-cols-4 gap-4 p-6 bg-slate-100 font-semibold text-slate-900">
+                <div>Feature</div>
+                <div className="text-center">Good Soil</div>
+                <div className="text-center">Traditional Books</div>
+                <div className="text-center">Other Apps</div>
+              </div>
+
+              {[
+                ["90-Day Structure", "✓", "✗", "Limited"],
+                ["Biblical Foundation", "✓", "✓", "Varies"],
+                ["Community Features", "✓", "✗", "Basic"],
+                ["Progress Tracking", "✓", "✗", "Limited"],
+                ["Habit Formation", "✓", "✗", "Basic"],
+                ["Accountability", "✓", "✗", "Limited"],
+                ["Mobile Access", "✓", "✗", "✓"],
+                ["Lifetime Updates", "✓", "✗", "✗"],
+              ].map(([feature, goodSoil, books, apps], index) => (
+                <div key={index} className="grid grid-cols-4 gap-4 p-6 border-b border-slate-100">
+                  <div className="font-medium text-slate-900">{feature}</div>
+                  <div className="text-center">
+                    <span className={goodSoil === "✓" ? "text-green-600 font-bold" : "text-slate-600"}>{goodSoil}</span>
+                  </div>
+                  <div className="text-center">
+                    <span className={books === "✓" ? "text-green-600 font-bold" : "text-slate-400"}>{books}</span>
+                  </div>
+                  <div className="text-center">
+                    <span className={apps === "✓" ? "text-green-600 font-bold" : "text-slate-400"}>{apps}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-green-600 to-green-700 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Experience These Features?</h2>
+          <p className="text-xl mb-8 text-green-100 max-w-2xl mx-auto">
+            Start your 90-day transformation journey today and discover the power of intentional spiritual growth.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/get-started">
+              <Button size="lg" className="bg-white text-green-700 hover:bg-green-50 px-12 py-4 text-lg font-semibold">
+                Get Started Now
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+            <Link href="/pricing">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white text-white hover:bg-white hover:text-green-700 px-12 py-4 text-lg bg-transparent"
+              >
+                View Pricing
+              </Button>
+            </Link>
+          </div>
+
+          <p className="text-sm text-green-100 mt-4">30-day money-back guarantee • No setup fees • Cancel anytime</p>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  )
+}
