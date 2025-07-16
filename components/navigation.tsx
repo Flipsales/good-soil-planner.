@@ -1,53 +1,97 @@
 "use client"
 
-import { useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Leaf, Menu, X } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { useState } from "react"
 
 export function Navigation() {
+  const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
 
+  const navItems = [
+    { href: "/", label: "Home" },
+    { href: "/features", label: "Features" },
+    { href: "/testimonials", label: "Stories" },
+    { href: "/pricing", label: "Pricing" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
+  ]
+
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold">🌱</span>
-            </div>
-            <div className="text-xl font-bold">
-              <span className="text-amber-600">GOOD SOIL</span>
-              <span className="text-blue-600 italic ml-1">planner</span>
-            </div>
+    <header className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 text-white sticky top-0 z-50">
+      <div className="container mx-auto px-4 py-4">
+        <div className="flex items-center justify-between">
+          <Link href="/" className="flex items-center space-x-2">
+            <Leaf className="h-8 w-8 text-amber-400" />
+            <span className="text-xl font-bold">Good Soil</span>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/planner" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-              The Planner
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex space-x-6">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`hover:text-amber-400 transition-colors ${pathname === item.href ? "text-amber-400" : ""}`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="hidden md:flex space-x-4">
+            <Link href="/login">
+              <Button
+                variant="outline"
+                className="border-white text-white hover:bg-white hover:text-slate-900 bg-transparent"
+              >
+                Login
+              </Button>
             </Link>
-            <Link href="/resources" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-              Resources
-            </Link>
-            <Link href="/about" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-              About
-            </Link>
-            <Link href="/shop" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-              Shop
-            </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-              Contact
+            <Link href="/get-started">
+              <Button className="bg-amber-400 text-slate-900 hover:bg-amber-500">Get Started</Button>
             </Link>
           </div>
 
-          <div className="hidden md:flex items-center space-x-4">
-            <Link href="/account" className="text-gray-700 hover:text-blue-600">
-              Sign In
-            </Link>
-            <Link href="/shop" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
-              Get Started
-            </Link>
-          </div>
+          {/* Mobile Menu Button */}
+          <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
+
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <nav className="md:hidden mt-4 pb-4 border-t border-slate-700">
+            <div className="flex flex-col space-y-4 mt-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`hover:text-amber-400 transition-colors ${pathname === item.href ? "text-amber-400" : ""}`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <div className="flex flex-col space-y-2 pt-4 border-t border-slate-700">
+                <Link href="/login" onClick={() => setIsOpen(false)}>
+                  <Button
+                    variant="outline"
+                    className="w-full border-white text-white hover:bg-white hover:text-slate-900 bg-transparent"
+                  >
+                    Login
+                  </Button>
+                </Link>
+                <Link href="/get-started" onClick={() => setIsOpen(false)}>
+                  <Button className="w-full bg-amber-400 text-slate-900 hover:bg-amber-500">Get Started</Button>
+                </Link>
+              </div>
+            </div>
+          </nav>
+        )}
       </div>
-    </nav>
+    </header>
   )
 }
