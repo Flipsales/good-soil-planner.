@@ -1,35 +1,14 @@
 import Image from "next/image"
-import { ArrowRight, BookOpen, Calendar, CheckCircle, Leaf, Play, Star, Users } from "lucide-react"
+import Link from "next/link"
+import { ArrowRight, BookOpen, Calendar, CheckCircle, Play, Star, Users } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Footer } from "@/components/footer"
 
-export default function GoodSoilLanding() {
+export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      {/* Header */}
-      <header className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 text-white">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <Leaf className="h-8 w-8 text-amber-400" />
-              <span className="text-xl font-bold">Good Soil</span>
-            </div>
-            <nav className="hidden md:flex space-x-6">
-              <a href="#features" className="hover:text-amber-400 transition-colors">
-                Features
-              </a>
-              <a href="#testimonials" className="hover:text-amber-400 transition-colors">
-                Stories
-              </a>
-              <a href="#pricing" className="hover:text-amber-400 transition-colors">
-                Get Started
-              </a>
-            </nav>
-          </div>
-        </div>
-      </header>
-
       {/* Hero Section */}
       <section className="py-20 lg:py-32">
         <div className="container mx-auto px-4">
@@ -51,42 +30,48 @@ export default function GoodSoilLanding() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 py-4 text-lg"
-              >
-                Start My Journey Now
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-slate-300 text-slate-700 hover:bg-slate-50 px-8 py-4 text-lg bg-transparent"
-              >
-                <Play className="mr-2 h-5 w-5" />
-                Watch Introduction
-              </Button>
+              <Link href="/get-started">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 py-4 text-lg"
+                >
+                  Start My Journey Now
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="/watch-intro">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-slate-300 text-slate-700 hover:bg-slate-50 px-8 py-4 text-lg bg-transparent"
+                >
+                  <Play className="mr-2 h-5 w-5" />
+                  Watch Introduction
+                </Button>
+              </Link>
             </div>
 
             {/* Video Section */}
-            <div className="relative max-w-4xl mx-auto">
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-red-500 via-pink-500 to-purple-600">
-                <Image
-                  src="/hero-video-thumbnail.png"
-                  alt="Good Soil Discipleship Planner Introduction Video"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                  <Button size="lg" className="bg-white/90 hover:bg-white text-slate-900 rounded-full p-6">
-                    <Play className="h-8 w-8 ml-1" />
-                  </Button>
+            <Link href="/watch-intro">
+              <div className="relative max-w-4xl mx-auto cursor-pointer group">
+                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-red-500 via-pink-500 to-purple-600">
+                  <Image
+                    src="/hero-video-thumbnail.png"
+                    alt="Good Soil Discipleship Planner Introduction Video"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                    <Button size="lg" className="bg-white/90 hover:bg-white text-slate-900 rounded-full p-6">
+                      <Play className="h-8 w-8 ml-1" />
+                    </Button>
+                  </div>
+                </div>
+                <div className="absolute -top-4 -right-4 bg-amber-400 text-slate-900 px-4 py-2 rounded-full font-semibold text-sm shadow-lg">
+                  Watch First! 👆
                 </div>
               </div>
-              <div className="absolute -top-4 -right-4 bg-amber-400 text-slate-900 px-4 py-2 rounded-full font-semibold text-sm shadow-lg">
-                Watch First! 👆
-              </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -95,26 +80,26 @@ export default function GoodSoilLanding() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-12 py-4 text-xl font-semibold mb-12"
-            >
-              Start My Journey Now
-              <ArrowRight className="ml-2 h-6 w-6" />
-            </Button>
+            <Link href="/get-started">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-12 py-4 text-xl font-semibold mb-12"
+              >
+                Start My Journey Now
+                <ArrowRight className="ml-2 h-6 w-6" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Tool for Discipleship Section - Completely Separate */}
+      {/* Tool for Discipleship Section */}
       <section className="py-20 bg-gradient-to-b from-slate-50 to-white">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left side - Tree logo and description */}
             <div className="relative">
               <div className="bg-gradient-to-br from-green-50 to-amber-50 rounded-2xl p-12">
                 <div className="text-center">
-                  {/* Tree Icon */}
                   <div className="bg-green-600 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8">
                     <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7.5V9C15 10.66 13.66 12 12 12S9 10.66 9 12V7.5L3 7V9C3 11.76 5.24 14 8 14V16H7V21H9V16H15V21H17V16H16V14C18.76 14 21 11.76 21 9Z" />
@@ -135,7 +120,6 @@ export default function GoodSoilLanding() {
               </div>
             </div>
 
-            {/* Right side - Features and benefits */}
             <div>
               <div className="space-y-8">
                 <div>
@@ -192,30 +176,38 @@ export default function GoodSoilLanding() {
               </div>
 
               <div className="mt-10">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 py-3"
-                >
-                  Get Your Planner Today
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
+                <Link href="/get-started">
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 py-3"
+                  >
+                    Get Your Planner Today
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Grid Section */}
-      <section id="features" className="py-20 bg-slate-50">
+      {/* Quick Features Preview */}
+      <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
               Everything You Need for Spiritual Growth
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
               The Good Soil Planner provides a complete framework for developing the spiritual habits that lead to
               lasting transformation and fruitful living.
             </p>
+            <Link href="/features">
+              <Button variant="outline" className="text-green-600 border-green-600 hover:bg-green-50 bg-transparent">
+                View All Features
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -226,8 +218,7 @@ export default function GoodSoilLanding() {
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900 mb-4">90-Day Journey</h3>
                 <p className="text-slate-600">
-                  Structured daily practices and reflections designed to build lasting spiritual habits over three
-                  transformative months.
+                  Structured daily practices and reflections designed to build lasting spiritual habits.
                 </p>
               </CardContent>
             </Card>
@@ -239,8 +230,7 @@ export default function GoodSoilLanding() {
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900 mb-4">Biblical Foundation</h3>
                 <p className="text-slate-600">
-                  Every lesson rooted in Scripture, helping you develop a deeper understanding of God's Word and its
-                  application.
+                  Every lesson rooted in Scripture for deeper understanding and application.
                 </p>
               </CardContent>
             </Card>
@@ -251,91 +241,30 @@ export default function GoodSoilLanding() {
                   <Users className="h-8 w-8 text-amber-600" />
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900 mb-4">Community Focus</h3>
-                <p className="text-slate-600">
-                  Strengthen relationships and build meaningful connections through guided exercises and group
-                  discussions.
-                </p>
+                <p className="text-slate-600">Build meaningful connections through guided exercises and discussions.</p>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Testimonials Preview */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8">
-                Live Rooted. Lead Well. Grow on Purpose.
-              </h2>
-
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-green-600 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-slate-900 mb-2">Develop Consistent Spiritual Practices</h3>
-                    <p className="text-slate-600">
-                      Build daily habits that strengthen your relationship with God and create lasting transformation.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-green-600 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-slate-900 mb-2">Strengthen Your Leadership</h3>
-                    <p className="text-slate-600">
-                      Learn to lead with purpose and integrity in your family, workplace, and community.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-green-600 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-slate-900 mb-2">Live with Intentionality</h3>
-                    <p className="text-slate-600">
-                      Discover your God-given purpose and align your daily actions with eternal values.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="bg-gradient-to-br from-green-50 to-amber-50 rounded-2xl p-8">
-                <div className="bg-white rounded-xl p-6 shadow-lg">
-                  <div className="flex items-center mb-4">
-                    <Leaf className="h-8 w-8 text-green-600 mr-3" />
-                    <span className="text-2xl font-bold text-slate-900">Good Soil Planner</span>
-                  </div>
-                  <p className="text-slate-600 mb-6">
-                    "Just as good soil produces abundant fruit, this planner helps cultivate the conditions for
-                    spiritual growth in your life."
-                  </p>
-                  <div className="flex items-center space-x-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
-                    ))}
-                    <span className="ml-2 text-sm text-slate-600">Trusted by thousands</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section id="testimonials" className="py-20 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Stories of Transformation</h2>
-            <p className="text-xl text-slate-600">See how the Good Soil Planner has impacted lives across the globe</p>
+            <p className="text-xl text-slate-600 mb-8">
+              See how the Good Soil Planner has impacted lives across the globe
+            </p>
+            <Link href="/testimonials">
+              <Button variant="outline" className="text-green-600 border-green-600 hover:bg-green-50 bg-transparent">
+                Read All Stories
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             <Card className="border-0 shadow-lg">
               <CardContent className="p-8">
                 <div className="flex items-center space-x-1 mb-4">
@@ -408,8 +337,8 @@ export default function GoodSoilLanding() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section id="pricing" className="py-20 bg-gradient-to-r from-green-600 to-green-700 text-white">
+      {/* Final CTA */}
+      <section className="py-20 bg-gradient-to-r from-green-600 to-green-700 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Begin Your Journey?</h2>
           <p className="text-xl mb-8 text-green-100 max-w-2xl mx-auto">
@@ -440,40 +369,26 @@ export default function GoodSoilLanding() {
             </ul>
           </div>
 
-          <Button size="lg" className="bg-white text-green-700 hover:bg-green-50 px-12 py-4 text-lg font-semibold">
-            Start My Journey Now
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+          <Link href="/get-started">
+            <Button size="lg" className="bg-white text-green-700 hover:bg-green-50 px-12 py-4 text-lg font-semibold">
+              Start My Journey Now
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
 
-          <p className="text-sm text-green-100 mt-4">30-day money-back guarantee • Instant access</p>
+          <p className="text-sm text-green-100 mt-4">
+            30-day money-back guarantee • Instant access •
+            <Link href="/pricing" className="underline hover:no-underline ml-1">
+              View pricing details
+            </Link>
+          </p>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <Leaf className="h-6 w-6 text-amber-400" />
-              <span className="text-lg font-bold">Good Soil Discipleship Planner</span>
-            </div>
-            <div className="flex space-x-6 text-sm text-slate-400">
-              <a href="#" className="hover:text-white transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Contact
-              </a>
-            </div>
-          </div>
-          <div className="border-t border-slate-800 mt-8 pt-8 text-center text-slate-400">
-            <p>&copy; 2024 Good Soil Discipleship Planner. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
+  )
+}
+
   )
 }
