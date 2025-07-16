@@ -1,21 +1,14 @@
-import { Navigation } from "@/components/navigation"
-import { HeroSection } from "@/components/hero-section"
-import { FeaturesSection } from "@/components/features-section"
-import { VideoSection } from "@/components/video-section"
-import { TestimonialsSection } from "@/components/testimonials-section"
-import { CTASection } from "@/components/cta-section" 
-import { Footer } from "@/components/footer"
-
 export default function HomePage() {
   return (
-    <div className="min-h-screen">
-      <Navigation />
-      <HeroSection />
-      <FeaturesSection />
-      <VideoSection />
-      <TestimonialsSection />
-      <CTASection />
-      <Footer />
+    <div className="min-h-screen p-8 bg-gray-100">
+      <div className="max-w-4xl mx-auto text-center">
+        <h1 className="text-6xl font-bold text-blue-600 mb-4">Good Soil Planner</h1>
+        <p className="text-2xl text-gray-700 mb-8">🌱 Test Page - If you can see this, routing works! 🌱</p>
+        <div className="bg-white p-8 rounded-lg shadow-lg">
+          <h2 className="text-3xl font-semibold mb-4">Success!</h2>
+          <p className="text-lg text-gray-600">The homepage is loading correctly.</p>
+        </div>
+      </div>
     </div>
   )
 }
