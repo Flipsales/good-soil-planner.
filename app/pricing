@@ -1,0 +1,239 @@
+import { ArrowRight, Check, Star, Zap } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Footer } from "@/components/footer"
+import Link from "next/link"
+
+export default function PricingPage() {
+  const plans = [
+    {
+      name: "Essential",
+      price: 29,
+      period: "one-time",
+      description: "Perfect for individual spiritual growth",
+      features: [
+        "90-day structured program",
+        "Daily devotional content",
+        "Progress tracking",
+        "Mobile app access",
+        "Basic community features",
+        "Email support",
+      ],
+      popular: false,
+      cta: "Start Essential",
+    },
+    {
+      name: "Complete",
+      price: 49,
+      period: "one-time",
+      description: "Everything you need for transformation",
+      features: [
+        "Everything in Essential",
+        "Advanced community features",
+        "Accountability partner matching",
+        "Video content library",
+        "Printable resources",
+        "Priority support",
+        "Bonus: 30-day extension",
+      ],
+      popular: true,
+      cta: "Start Complete",
+    },
+    {
+      name: "Premium",
+      price: 79,
+      period: "one-time",
+      description: "For serious spiritual growth seekers",
+      features: [
+        "Everything in Complete",
+        "1-on-1 coaching session",
+        "Custom goal setting",
+        "Advanced analytics",
+        "Exclusive webinars",
+        "Lifetime updates",
+        "Small group leader resources",
+      ],
+      popular: false,
+      cta: "Start Premium",
+    },
+  ]
+
+  const faqs = [
+    {
+      question: "Is this a one-time payment?",
+      answer:
+        "Yes! All our plans are one-time payments with no recurring fees. You get lifetime access to your chosen plan.",
+    },
+    {
+      question: "What if I'm not satisfied?",
+      answer: "We offer a 30-day money-back guarantee. If you're not completely satisfied, we'll refund your purchase.",
+    },
+    {
+      question: "Can I upgrade later?",
+      answer: "You can upgrade to a higher plan at any time and only pay the difference.",
+    },
+    {
+      question: "Is there a mobile app?",
+      answer: "Yes, our mobile app is available for both iOS and Android, included with all plans.",
+    },
+    {
+      question: "How long do I have access?",
+      answer: "You have lifetime access to your purchased plan, including any updates and improvements we make.",
+    },
+  ]
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+      {/* Hero Section */}
+      <section className="py-20 lg:py-32">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-4xl mx-auto">
+            <Badge className="mb-6 bg-amber-100 text-amber-800 hover:bg-amber-200">
+              💰 Simple, Transparent Pricing
+            </Badge>
+
+            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+              Choose Your
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-amber-600">
+                {" "}
+                Growth Plan
+              </span>
+            </h1>
+
+            <p className="text-xl md:text-2xl text-slate-600 mb-8 leading-relaxed">
+              One-time payment, lifetime access. Start your 90-day transformation journey today.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Cards */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {plans.map((plan, index) => (
+              <Card
+                key={index}
+                className={`relative border-0 shadow-lg hover:shadow-xl transition-shadow ${
+                  plan.popular ? "ring-2 ring-green-500 scale-105" : ""
+                }`}
+              >
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <Badge className="bg-green-500 text-white px-4 py-1">
+                      <Star className="h-3 w-3 mr-1" />
+                      Most Popular
+                    </Badge>
+                  </div>
+                )}
+
+                <CardHeader className="text-center pb-8">
+                  <CardTitle className="text-2xl font-bold text-slate-900 mb-2">{plan.name}</CardTitle>
+                  <div className="mb-4">
+                    <span className="text-4xl font-bold text-slate-900">${plan.price}</span>
+                    <span className="text-slate-600 ml-2">{plan.period}</span>
+                  </div>
+                  <p className="text-slate-600">{plan.description}</p>
+                </CardHeader>
+
+                <CardContent>
+                  <ul className="space-y-3 mb-8">
+                    {plan.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center text-slate-700">
+                        <Check className="h-4 w-4 text-green-600 mr-3 flex-shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link href="/get-started" className="block">
+                    <Button
+                      className={`w-full py-3 ${
+                        plan.popular
+                          ? "bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800"
+                          : "bg-slate-900 hover:bg-slate-800"
+                      } text-white`}
+                    >
+                      {plan.cta}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Money Back Guarantee */}
+      <section className="py-20 bg-green-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="bg-white rounded-2xl p-8 shadow-lg">
+              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Zap className="h-8 w-8 text-green-600" />
+              </div>
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">30-Day Money-Back Guarantee</h2>
+              <p className="text-xl text-slate-600 mb-6">
+                We're so confident in the Good Soil Discipleship Planner that we offer a full 30-day money-back
+                guarantee. If you're not completely satisfied with your spiritual growth journey, we'll refund every
+                penny.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/get-started">
+                  <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white px-8 py-3">
+                    Start Risk-Free Today
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+                <Link href="/refund">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-green-600 text-green-600 hover:bg-green-50 px-8 py-3 bg-transparent"
+                  >
+                    Learn About Our Guarantee
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 text-center mb-16">
+              Frequently Asked Questions
+            </h2>
+
+            <div className="space-y-6">
+              {faqs.map((faq, index) => (
+                <Card key={index} className="border-0 shadow-lg">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-slate-900 mb-3">{faq.question}</h3>
+                    <p className="text-slate-600">{faq.answer}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <div className="text-center mt-12">
+              <p className="text-slate-600 mb-4">Still have questions?</p>
+              <Link href="/contact">
+                <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 bg-transparent">
+                  Contact Our Support Team
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  )
+}
