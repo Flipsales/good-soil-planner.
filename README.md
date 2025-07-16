@@ -1,2 +1,2 @@
 # good-soil-planner.
-updated componants again
+updated componants
